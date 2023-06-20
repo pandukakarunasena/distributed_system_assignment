@@ -1,0 +1,39 @@
+syntax = "proto3";
+option java_multiple_files = true;
+package grpc.generated.retail.shop;
+
+message PurchaseItemRequest {
+    int32 quantity = 1;
+    bool isSentByPrimary = 2;
+}
+
+message PurchaseItemResponse {
+    bool purchaseComplete = 1;
+}
+
+service PurchaseItemService {
+    rpc purchaseItem(PurchaseItemRequest) returns (PurchaseItemResponse);
+}
+
+message RestockItemRequest {
+    int32 quantity = 1;
+    bool isSentByPrimary = 2;
+}
+
+message RestockItemResponse {
+    bool restockComplete = 1;
+}
+
+service RestockItemService {
+    rpc restockItem(RestockItemRequest) returns (RestockItemResponse);
+}
+
+message GetItemQuantityRequest {}
+
+message GetItemQuantityResponse {
+    int32 quantity = 1;
+}
+
+service GetItemQuantityService {
+    rpc getItemQuantity(GetItemQuantityRequest) returns (GetItemQuantityResponse);
+}
